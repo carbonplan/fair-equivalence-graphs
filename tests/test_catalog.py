@@ -1,4 +1,3 @@
-# isort: skip_file
 import math
 
 import numpy as np
@@ -50,7 +49,9 @@ def test_run_fair() -> None:
     storage, reemission, justified = get_perturbations(
         scenario, year, length, storage_magnitude, equivalence_ratio
     )
-    experimental_scenarios, fair_results = run_fair(scenario, storage, reemission, justified)
+    experimental_scenarios, fair_results = run_fair(
+        scenario, storage, reemission, justified
+    )
     assert isinstance(experimental_scenarios, dict)
     assert isinstance(fair_results, dict)
 
@@ -64,7 +65,9 @@ def test_run_fair_rf_values(scenario, storage_magnitude) -> None:
     storage, reemission, justified = get_perturbations(
         scenario, year, length, storage_magnitude, equivalence_ratio
     )
-    experimental_scenarios, fair_results = run_fair(scenario, storage, reemission, justified)
+    experimental_scenarios, fair_results = run_fair(
+        scenario, storage, reemission, justified
+    )
     assert sum(fair_results["justified"]["rf"] - fair_results["default"]["rf"]) > 0
     assert sum(fair_results["default"]["rf"] - fair_results["permanent"]["rf"]) > 0
     assert sum(fair_results["default"]["rf"] - fair_results["temporary"]["rf"]) > 0
@@ -97,7 +100,9 @@ def test_get_equivalence_ratio_values(time_horizon) -> None:
     storage, reemission, justified = get_perturbations(
         scenario, year, length, storage_magnitude, equivalence_ratio
     )
-    experimental_scenarios, fair_results = run_fair(scenario, storage, reemission, justified)
+    experimental_scenarios, fair_results = run_fair(
+        scenario, storage, reemission, justified
+    )
     yr_idx = np.where(scenario.Emissions.year == year)[0][0]
     assert math.isclose(
         sum(fair_results["default"]["rf"][yr_idx : yr_idx + time_horizon]),
