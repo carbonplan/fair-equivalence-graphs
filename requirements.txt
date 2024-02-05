@@ -1,6 +1,6 @@
 carbonplan-styles
 fair<=2.0
 numpy==1.24.1
-scipy==1.10.1
+scipy==1.12.0
 seaborn==0.11.2
 tonyear==1.1.0
